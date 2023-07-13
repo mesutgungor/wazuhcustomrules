@@ -52,8 +52,8 @@
   <if_sid>80200</if_sid>
   <description>Create AWS user - Detect creation of a new AWS user.
     A new AWS user has been created
-    (requesting user: { aws.userId }, requesting IP: { aws.sourceIpAddress }, AWS region: { aws.region },
-     new user created: { aws.requestParameters.userName })</description>
+    (requesting user: $(aws.userId), requesting IP: $(aws.sourceIpAddress), AWS region: $(aws.region),
+     new user created: $(aws.requestParameters.userName))</description>
   <field name="aws.eventSource">iam.amazonaws.com</field>
   <field name="aws.eventName">CreateUser</field>
   <mitre>
@@ -65,8 +65,8 @@
   <if_sid>80200</if_sid>
   <description>Create Group - Detect creation of a new user group.
     A new user group has been created.
-    (requesting user: { aws.userId }, requesting IP: { aws.sourceIpAddress }, AWS region: { aws.region },
-     group name: { aws.requestParameters.groupName })</description>
+    (requesting user: $(aws.userId), requesting IP: $(aws.sourceIpAddress), AWS region: $(aws.region),
+     group name: $(aws.requestParameters.groupName))</description>
   <field name="aws.eventSource">iam.amazonaws.com</field>
   <field name="aws.eventName">CreateGroup</field>
   <mitre>
@@ -78,8 +78,8 @@
   <if_sid>80200</if_sid>
   <description>Delete Group - Detect deletion of a user group.
     A user group has been deleted.
-    (requesting user: { aws.userId }, requesting IP: { aws.sourceIpAddress }, AWS region: { aws.region },
-     group name: { aws.requestParameters.groupName })</description>
+    (requesting user: $(aws.userId), requesting IP: $(aws.sourceIpAddress), AWS region: $(aws.region),
+     group name: $(aws.requestParameters.groupName))</description>
   <field name="aws.eventSource">iam.amazonaws.com</field>
   <field name="aws.eventName">DeleteGroup</field>
   <mitre>
@@ -91,9 +91,9 @@
   <if_sid>80200</if_sid>
   <description>ECS Service Created - Detect a new service is created in ECS.
     A new service has been created in ECS
-    (requesting user: { aws.userId }, requesting IP: { aws.sourceIpAddress }, AWS region: { aws.region },
-     cluster: { aws.requestParameters.cluster }, service name: { aws.requestParameters.serviceName },
-     task definition: { aws.requestParameters.taskDefinition })</description>
+    (requesting user: $(aws.userId), requesting IP: $(aws.sourceIpAddress), AWS region: $(aws.region),
+     cluster: $(aws.requestParameters.cluster), service name: $(aws.requestParameters.serviceName),
+     task definition: $(aws.requestParameters.taskDefinition))</description>
   <field name="aws.eventSource">ecs.amazonaws.com</field>
   <field name="aws.eventName">CreateService</field>
   <mitre>
@@ -105,8 +105,8 @@
   <if_sid>80200</if_sid>
   <description>ECS Task Run or Started - Detect a new task is started in ECS.
     A new task has been started in ECS
-    (requesting user: { aws.userId }, requesting IP: { aws.sourceIpAddress }, AWS region: { aws.region },
-     cluster: { aws.requestParameters.cluster }, task definition: { aws.requestParameters.taskDefinition })</description>
+    (requesting user: $(aws.userId), requesting IP: $(aws.sourceIpAddress), AWS region: $(aws.region),
+     cluster: $(aws.requestParameters.cluster), task definition: $(aws.requestParameters.taskDefinition))</description>
   <field name="aws.eventSource">ecs.amazonaws.com</field>
   <field name="aws.eventName">RunTask</field>
   <field name="aws.eventName">StartTask</field>
@@ -119,8 +119,8 @@
   <if_sid>80200</if_sid>
   <description>Create Lambda Function - Detect creation of a Lambda function.
     Lambda function has been created.
-    (requesting user: { aws.userId }, requesting IP: { aws.sourceIpAddress }, AWS region: { aws.region },
-     lambda function: { aws.requestParameters.functionName })</description>
+    (requesting user: $(aws.userId), requesting IP: $(aws.sourceIpAddress), AWS region: $(aws.region),
+     lambda function: $(aws.requestParameters.functionName))</description>
   <field name="aws.eventSource">lambda.amazonaws.com</field>
   <field name="aws.eventName">CreateFunction20150331</field>
   <mitre>
@@ -132,8 +132,8 @@
   <if_sid>80200</if_sid>
   <description>Update Lambda Function Code - Detect updates to a Lambda function code.
     The code of a Lambda function has been updated.
-    (requesting user: { aws.userId }, requesting IP: { aws.sourceIpAddress }, AWS region: { aws.region },
-     lambda function: { aws.requestParameters.functionName })</description>
+    (requesting user: $(aws.userId), requesting IP: $(aws.sourceIpAddress), AWS region: $(aws.region),
+     lambda function: $(aws.requestParameters.functionName))</description>
   <field name="aws.eventSource">lambda.amazonaws.com</field>
   <field name="aws.eventName">UpdateFunctionCode20150331v2</field>
   <mitre>
@@ -145,8 +145,8 @@
   <if_sid>80200</if_sid>
   <description>Update Lambda Function Configuration - Detect updates to a Lambda function configuration.
     The configuration of a Lambda function has been updated.
-    (requesting user: { aws.userId }, requesting IP: { aws.sourceIpAddress }, AWS region: { aws.region },
-     lambda function: { aws.requestParameters.functionName })</description>
+    (requesting user: $(aws.userId), requesting IP: $(aws.sourceIpAddress), AWS region: $(aws.region),
+     lambda function: $(aws.requestParameters.functionName))</description>
   <field name="aws.eventSource">lambda.amazonaws.com</field>
   <field name="aws.eventName">UpdateFunctionConfiguration20150331v2</field>
   <mitre>
@@ -158,10 +158,10 @@
   <if_sid>80200</if_sid>
   <description>Run Instances - Detect launching of instances.
     A number of instances have been launched.
-    (requesting user: { aws.userId }, requesting IP: { aws.sourceIpAddress }, AWS region: { aws.region },
-     availability zone: { aws.requestParameters.availabilityZone },
-     subnet id: { aws.responseElements.subnetId },
-     reservation id: { aws.responseElements.reservationId })</description>
+    (requesting user: $(aws.userId), requesting IP: $(aws.sourceIpAddress), AWS region: $(aws.region),
+     availability zone: $(aws.requestParameters.availabilityZone),
+     subnet id: $(aws.responseElements.subnetId),
+     reservation id: $(aws.responseElements.reservationId))</description>
   <field name="aws.eventSource">ec2.amazonaws.com</field>
   <field name="aws.eventName">RunInstances</field>
   <mitre>
@@ -173,11 +173,11 @@
   <if_sid>80200</if_sid>
   <description>Run Instances in Non-approved Region - Detect launching of instances in a non-approved region.
     A number of instances have been launched in a non-approved region.
-    (requesting user: { aws.userId }, requesting IP: { aws.sourceIpAddress }, AWS region: { aws.region },
-     availability zone: { aws.requestParameters.availabilityZone },
-     subnet id: { aws.responseElements.subnetId },
-     reservation id: { aws.responseElements.reservationId },
-     image id: { aws.responseElements.instancesSet.items.0.instanceId })</description>
+    (requesting user: $(aws.userId), requesting IP: $(aws.sourceIpAddress), AWS region: $(aws.region),
+     availability zone: $(aws.requestParameters.availabilityZone),
+     subnet id: $(aws.responseElements.subnetId),
+     reservation id: $(aws.responseElements.reservationId),
+     image id: $(aws.responseElements.instancesSet.items.0.instanceId))</description>
   <group>aws-cloudtrail</group>
   <field name="aws.eventSource">ec2.amazonaws.com</field>
   <field name="aws.eventName">RunInstances</field>
@@ -192,8 +192,8 @@
   <if_sid>80200</if_sid>
   <description>Delete Bucket Encryption - Detect deleting configuration to use encryption for bucket storage.
     An encryption configuration for a bucket has been deleted.
-    (requesting user: { aws.userId }, requesting IP: { aws.sourceIpAddress }, AWS region: { aws.region },
-     bucket: { s3.bucket })</description>
+    (requesting user: $(aws.userId), requesting IP: $(aws.sourceIpAddress), AWS region: $(aws.region),
+     bucket: $(s3.bucket))</description>
   <group>aws-cloudtrail</group>
   <field name="aws.eventSource">s3.amazonaws.com</field>
   <field name="aws.eventName">DeleteBucketEncryption</field>
@@ -206,8 +206,8 @@
   <if_sid>80200</if_sid>
   <description>Delete Bucket Public Access Block - Detect deleting blocking public access to bucket.
     A public access block for a bucket has been deleted.
-    (requesting user: { aws.userId }, requesting IP: { aws.sourceIpAddress }, AWS region: { aws.region },
-     bucket: { s3.bucket })</description>
+    (requesting user: $(aws.userId), requesting IP: $(aws.sourceIpAddress), AWS region: $(aws.region),
+     bucket: $(s3.bucket))</description>
   <group>aws-cloudtrail</group>
   <field name="aws.eventSource">s3.amazonaws.com</field>
   <field name="aws.eventName">PutBucketPublicAccessBlock</field>
@@ -221,8 +221,8 @@
   <if_sid>80200</if_sid>
   <description>List Buckets - Detect listing of all S3 buckets.
     A list of all S3 buckets has been requested.
-    (requesting user: { aws.userId }, requesting IP: { aws.sourceIpAddress }, AWS region: { aws.region },
-     host: { aws.requestParameters.host })</description>
+    (requesting user: $(aws.userId), requesting IP: $(aws.sourceIpAddress), AWS region: $(aws.region),
+     host: $(aws.requestParameters.host))</description>
   <field name="aws.eventSource">s3.amazonaws.com</field>
   <field name="aws.eventName">ListBuckets</field>
   <mitre>
@@ -234,8 +234,8 @@
   <if_sid>80200</if_sid>
   <description>Put Bucket ACL - Detect setting the permissions on an existing bucket using access control lists.
     The permissions on an existing bucket have been set using access control lists.
-    (requesting user: { aws.userId }, requesting IP: { aws.sourceIpAddress }, AWS region: { aws.region },
-     bucket name: { s3.bucket })</description>
+    (requesting user: $(aws.userId), requesting IP: $(aws.sourceIpAddress), AWS region: $(aws.region),
+     bucket name: $(s3.bucket))</description>
   <field name="aws.eventSource">s3.amazonaws.com</field>
   <field name="aws.eventName">PutBucketAcl</field>
   <mitre>
@@ -247,8 +247,8 @@
   <if_sid>80200</if_sid>
   <description>Put Bucket Policy - Detect applying an Amazon S3 bucket policy to an Amazon S3 bucket.
     An Amazon S3 bucket policy has been applied to an Amazon S3 bucket.
-    (requesting user: { aws.userId }, requesting IP: { aws.sourceIpAddress }, AWS region: { aws.region },
-     bucket name: { s3.bucket }, policy: { aws.requestParameters.policy })</description>
+    (requesting user: $(aws.userId), requesting IP: $(aws.sourceIpAddress), AWS region: $(aws.region),
+     bucket name: $(s3.bucket), policy: $(aws.requestParameters.policy))</description>
   <field name="aws.eventSource">s3.amazonaws.com</field>
   <field name="aws.eventName">PutBucketPolicy</field>
   <mitre>
@@ -260,8 +260,8 @@
   <if_sid>80200</if_sid>
   <description>CloudTrail Trail Created - Detect creation of a new trail.
     A new trail has been created.
-    (requesting user: { aws.userId }, requesting IP: { aws.sourceIpAddress }, AWS region: { aws.region },
-     trail name: { aws.requestParameters.name })</description>
+    (requesting user: $(aws.userId), requesting IP: $(aws.sourceIpAddress), AWS region: $(aws.region),
+     trail name: $(aws.requestParameters.name))</description>
   <field name="aws.eventSource">cloudtrail.amazonaws.com</field>
   <field name="aws.eventName">CreateTrail</field>
   <mitre>
@@ -273,8 +273,8 @@
   <if_sid>80200</if_sid>
   <description>CloudTrail Logging Disabled - The CloudTrail logging has been disabled, this could be potentially malicious.
     The CloudTrail logging has been disabled.
-    (requesting user: { aws.userId }, requesting IP: { aws.sourceIpAddress }, AWS region: { aws.region },
-     resource name: { aws.requestParameters.name })</description>
+    (requesting user: $(aws.userId), requesting IP: $(aws.sourceIpAddress), AWS region: $(aws.region),
+     resource name: $(aws.requestParameters.name))</description>
   <field name="aws.eventSource">cloudtrail.amazonaws.com</field>
   <field name="aws.eventName">StopLogging</field>
   <mitre>
